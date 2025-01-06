@@ -739,6 +739,577 @@ output: [
 ];
 
 console.log(JsUser.hasOwnProperty("isLoggedIn")); //true
+*/
+
+/************************************ Step-18 *******************************************/
+//Object destructuring and JSON API
+
+/*
+const course = {
+  coursename: "JS Hindi",
+  price: 999,
+  courseInsructor: "Chhotelal Patel"
+
+}
+
+// const {courseInsructor}=course;
+// console.log(courseInsructor);//Chhotelal Patel
+
+const {courseInsructor:instructor}=course;
+console.log(instructor); //Chhotelal Patel
+
+*/
+
+
+
+
+/*************************************Step-19*******************************************/
+//function and parameter
+// function  addTwoNumber(num1, num2){
+//   console.log(num1+num2);//3
+// }
+// addTwoNumber(3,null);
+
+// function fun1(username){
+//   return ` ${username} jsut loged in`;
+// }
+// console.log(fun1());// undefined jsut loged in
+
+
+// function fun2(username){
+//   if(!undefined) {// yehe per undefined ko flase man liye gaya hai
+//     console.log("Please Enter the a user name");//Please Enter the a user name
+//   return;
+//   }
+//   return `${username} hello`
+// }
+// console.log(fun2);//[Function: fun2]
+// console.log(fun2())//undefined
+
+
+
+
+// function fun3(username="Chhotelal"){
+//   return username;
+// }
+// console.log(fun3());//Chhotelal
+// console.log(fun3("hello"));// hello is case me value override ho gye  hai 
+
+
+
+
+
+/*************************************************** step-20 **************************************/
+//function with Object
+
+/*
+function calculateCartPrice(num){
+  return num;//10
+}
+console.log(calculateCartPrice(10, 20, 30, 40, 50))
+
+
+function calculateCartPrice(...num){
+  return num;
+}
+console.log(calculateCartPrice(10, 20, 30, 40, 50))//[ 10, 20, 30, 40, 50 ]
+
+
+function calculateCartPrice(val1, val2, ...num){
+  console.log(val1);//10
+  console.log(val2)//20
+  return num;
+}
+console.log(calculateCartPrice(10, 20, 30, 40, 50))//[ 30, 40, 50 ]
 
 
 */
+
+
+
+/***********************************************************8 step-21 *********************************/
+//scope
+
+/*
+var b=50;
+let a=10;
+const c=60;
+
+if(true){
+  var b=70;
+  let a=30;
+  const c=80;
+  console.log(b);//70
+  console.log(a);//30
+  console.log(c);//80
+}
+console.log(b);//70
+console.log(a)//10
+console.log(c);//60
+
+*/
+
+
+/*******************************************step-22 ********************************* */
+//scope and hosting
+
+
+/*
+//Example of clouser
+function one(){
+  let name="Chhotelal";
+  let lastname="Patel";
+  function two(){
+    console.log(name);//Chhotelal
+  }
+  console.log(lastname);//Patel
+  two();
+  
+  
+}
+one();
+
+
+
+//Note Iterating Concept
+point-1
+function addone(num){
+  return num+1;
+}
+console.log(addone(5));//6
+
+
+const addTwo=function(num){
+  return num+2;
+}
+
+console.log(addTwo())//NaN
+
+
+
+
+//point 2
+
+console.log(addone(5));//6
+function addone(num){
+  return num+1;
+}
+
+
+//Note for bellow function: Cannot access 'addTwo' before initialization
+console.log(addTwo(4))// it is give the because error   iss type ka function ko (function with express) call function declaration ka bad karate hai
+const addTwo=function(num){
+  return num+2;
+}
+
+
+*/
+
+
+
+
+/********************************************************* step-23****************** */
+//this and arrow
+
+
+/*
+const user = {
+  username: "Chhotelal Patel",
+  price: 999,
+  welcomemessage: function () {
+    console.log(this)// { username: 'Chhotelal Patel', price: 999, welcomemessage: [Function: welcomemessage]}
+    
+    return (`${this.username} welcome to my website`);
+  }
+}
+
+
+console.log(user.welcomemessage);//  [Function: welcomemessage] it is give the reference of function.
+console.log(user.welcomemessage());//Chhotelal Patel welcome to my website
+
+user.username="Vikas Patel";
+console.log(user.welcomemessage());//Vikas Patel welcome to my website out me username vikas pate isliye aya ki this keywor current context ko refer karat hai that mens current value ko
+
+console.log(this)//{}
+
+
+
+function test(){
+  let username="Chhotelal";
+  console.log(this.username)//undefined
+  //console.log(this)
+}
+test();
+
+
+const test=function(){
+  let username="Chhotelal Patel";
+  console.log(this.usernmae); //undefined
+}
+ test();
+*/
+
+
+/*
+const test2 = () => {
+  let username="Chhotella Patel";
+  console.log(this.username)//undefined
+  console.log(this)//{}
+
+}
+test2();
+
+
+const test3=()=>({name:"Chhotelal Patel"});
+console.log(test3());//{ name: 'Chhotelal Patel' }
+
+*/
+
+
+/********************************************************* step-24   ****************** */
+
+//IFFE: iss function ka tab use globle scope ka polution se bachene ka liye karate hai 
+
+/*
+(function(){
+  console.log('DB CONNECTED')//DB CONNECTED
+
+})(); //yeha per semilcolum used  functon ko end karane  ka liye kiay gya hai.
+
+
+(()=>{
+  console.log('DB Connection Sucessfully');//DB Connection Sucessfully
+
+})();
+
+
+((name)=>{
+  console.log(`DB Integration by ${name}`);//DB Integration by Chhotelal Patel
+})("Chhotelal Patel");
+
+(function test(){
+  console.log("I am named IFFE");//I am named IFFE
+
+})();
+
+*/
+
+
+
+/************************************** STEP-25 ****************************/
+//Call Stack  and excection of code
+
+//Javascript execution context
+/*Note :
+1.Browser ka globle executin context window hota hai.
+2.javascript single threded lanaguage hai.
+How many phase to run the javascript code
+a.variable or memory creation phase
+b.execution phase
+
+*/
+
+
+/***************************************************** Step-26 *****************************/
+//control flow
+
+/*
+//syntax
+// switch (key) {
+//   case value:
+
+//     break;
+//   case value:
+
+//     break;
+//   case value:
+
+//     break;
+
+//   default:
+//     break;
+// }
+
+
+
+falsy value :false,  0, -0, BigInt, on,  "", null, undefined, NaN
+truthy value: "0", "flase", " ", []. {}, function(){}
+
+
+
+if ([]) {
+  console.log("hello1");//hello [] truthy valve hai
+}
+
+if (null) {// null flase value hai
+  console.log("hello2");
+}
+
+if ("") { // "" false value hai
+  console.log("hello3")
+}
+
+if (" ") {
+  console.log("hello4");//hello4 " "  truthy vlaue  hai
+}
+
+if (undefined) { // undefined false value hai flay value hai
+  console.log("hello5");
+}
+
+
+//Null Coalescing Operator (??) :  this operator work on the null and undefined
+
+let val;
+// val = 5 ?? 10;
+// console.log(val);//5
+
+
+// val=null?? 12;
+// console.log(val);//12
+
+val = undefined ?? 13;
+console.log(val)//13
+
+
+//turnar operator
+condition ? Expression1 : Expression2;
+
+*/
+
+/*********************************************************** step-27 and 28 *********************************/
+//Loops
+/*
+
+
+
+1.for loop
+Syntax:
+for (Ininitialization; condition; updation) {
+  //stetement
+  }
+
+
+
+//while loop
+while (condition) {
+//stetement
+}
+
+
+
+//do-while
+do{
+statement;
+}while(condition)
+
+
+
+//keyword : break , continue
+
+
+
+*/
+
+
+
+/*******************************************************  step-29*******************************************/
+//Array Specific loops
+//1.for of
+// let arr=[1, 2, 4, 5, 6];
+// for(let num of arr){
+//   console.log(num); //output 1, 2, 3, 4, 5, 6
+// }
+
+// let greeting="Hello world!"
+// for(let greet of greeting){
+//   console.log(greet)// it display the all the character
+// }
+
+
+
+//map
+// const map=new Map();
+// map.set('IN', "India");
+// map.set('USA', "United Sate of America");
+// map.set('Fr', "France");
+// map.set('IN', "India");
+
+
+//console.log(map);
+//output:
+// Map(3) {
+//   'IN' => 'India',
+//   'USA' => 'United Sate of America',
+//   'Fr' => 'France'
+// }
+
+
+// for( let key of map){
+//   console.log(key);
+// }
+
+// output:
+// [ 'IN', 'India' ]
+// [ 'USA', 'United Sate of America' ]
+// [ 'Fr', 'France' ]
+
+
+// for( let [key, value] of map){
+//   console.log(key, ' : ', value);
+// }
+// output:
+// IN  :  India
+// USA  :  United Sate of America
+// Fr  :  France
+
+
+
+// const obj={ // for of  loop not iterable on the object
+//   name:"Chhotelal",
+//   age:23
+// }
+
+
+
+//for in loop
+// const myobject={
+//   js:"javascrip",
+//   cpp:"C++", 
+//   rb:"ruby",
+//   suift:"swift by apple"
+// }
+
+// for( const key in myobject){
+//   console.log(key);
+// }
+// output:
+// js
+// cpp
+// rb
+// suift
+
+
+// for(const key in myobject){
+//   console.log(myobject[key]);
+// }
+// output:
+// javascrip
+// C++
+// ruby
+// swift by apple
+
+
+// let arr=[1, 2, 3, 4];
+// for(let key in arr){
+//   console.log(key);
+// }
+// output:
+// 0
+// 1
+// 2
+// 3
+
+
+
+// let arr=[1, 2, 3, 4];
+// for(let key in arr){
+//   console.log(arr[key]);
+// }
+
+// output:
+// 1
+// 2
+// 3
+// 4
+
+
+
+//forEach loop
+// let arr = [1, 2, 3, 4, 5, 6, 7];
+// arr.forEach((item) => {
+//   console.log(item)
+
+// })
+// //output
+// 1
+// 2
+// 3
+// 4
+// 5
+// 6
+// 7
+
+
+// let arr = [1, 2, 3, 4, 5, 6, 7];
+// arr.forEach((item, idx) => {
+//   console.log(item, idx)
+// })
+
+// output:
+// 1 0
+// 2 1
+// 3 2
+// 4 3
+// 5 4
+// 6 5
+// 7 6
+
+
+
+/************************************************ step-30 ********************************** */
+
+//let arr=[1, 2, 3, 4, 5, 6];
+// let val=arr.forEach((item)=>{
+//   return item;
+// })
+// console.log(val);// undefined important notes foreach kuch bhi retuurn nhi karata hai.
+
+
+
+
+// let arr=[1, 2, 3, 4,, 5, 6];
+// const newNum=arr.filter((num)=>{
+//   return num>4; 
+// })
+// console.log(newNum);//[ 5, 6 ]
+
+
+
+
+
+// let myNumber = [1, 2, 3, 4, 5, 6];
+// let newArray=myNumber.map((num)=>{
+//   return num+10;
+// })
+
+// console.log(newArray);//[ 11, 12, 13, 14, 15, 16 ]
+
+
+// let myNumber=[1, 2, 3, 4, 5, 6];
+// const newNumber=myNumber
+//                 .map((num)=> num*10)
+//                 .map((num)=>num+1)
+//                 .filter((num)=> num>=40);
+// console.log(newNumber);//[ 41, 51, 61 ]
+
+
+
+//reduce
+// let myNumber=[1,2 ,3];
+// let initialvalue=0;
+// let mytotal=myNumber.reduce((acc, curr)=>{
+//   return acc+curr;
+// }, initialvalue);
+// console.log(mytotal)//6
+
+
+
+
+
+
+
+
+
+
+
